@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+    <title>Mirissa Jetliner - Whale Watching Blog</title>
+    <style>
+        :root {
+            --primary: #00c4cc;
+            --secondary: #8a2be2;
+            --text: #e0f7fa;
+            --light-text: #a0d6e8;
+            --dark-bg: rgba(1, 2, 2, 0.74);
+            --card-bg: rgba(1, 2, 2, 0.29);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('images/whale303.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: 600;
+            color: var(--primary);
+            text-shadow: 0 0 6px var(--primary);
+        }
+
+        .logo img {
+            width: clamp(20px, 4vw, 24px);
+            height: clamp(20px, 4vw, 24px);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-menu a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: clamp(12px, 2vw, 14px);
+            transition: color 0.3s;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-card {
+            background: var(--dark-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+            font-size: clamp(12px, 2vw, 14px);
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+            line-height: 1.4;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 15px;
+        }
+
+        .contact-card span {
+            display: block;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 196, 204, 0.4);
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: clamp(12px, 2vw, 14px);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .blog-button {
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            background: transparent;
+        }
+
+        .blog-button:hover {
+            background: rgba(0, 196, 204, 0.2);
+        }
+
+        .book-now {
+            background: linear-gradient(to right, #00c4cc, #8a2be2);
+            box-shadow: 0 0 8px var(--primary);
+            border: none;
+        }
+
+        .book-now:hover {
+            box-shadow: 0 0 12px var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Blog Section */
+        .blog-section {
+            padding: clamp(80px, 15vw, 100px) 5% 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .blog-section h1 {
+            font-size: clamp(28px, 5vw, 36px);
+            margin: 0 0 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .blog-post {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-8px);
+        }
+
+        .blog-post h2 {
+            font-size: clamp(20px, 3vw, 24px);
+            margin: 0 0 10px;
+            color: var(--primary);
+        }
+
+        .blog-post p {
+            font-size: clamp(14px, 2vw, 16px);
+            color: var(--light-text);
+            margin: 0 0 10px;
+        }
+
+        .blog-post .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .blog-post .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .blog-post .video-caption {
+            font-size: clamp(10px, 1.5vw, 12px);
+            color: var(--light-text);
+            opacity: 0.7;
+            margin: 5px 0;
+        }
+
+        .blog-post .video-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(12px, 2vw, 14px);
+        }
+
+        .blog-post .video-link a:hover {
+            color: var(--secondary);
+        }
+
+        .blog-post ul {
+            font-size: clamp(14px, 2vw, 16px);
+            color: var(--light-text);
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .blog-post ul li {
+            margin-bottom: 5px;
+        }
+
+        .blog-post a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .blog-post a:hover {
+            color: var(--secondary);
+        }
+
+        /* Social Media */
+        .social-media {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-media a {
+            width: 40px;
+            height: 40px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+        }
+
+        .social-media a:hover {
+            transform: scale(1.1);
+            background: rgba(0, 196, 204, 0.2);
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-wrap: wrap;
+                padding: 10px 3%;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                order: 1;
+            }
+
+            .logo {
+                order: 0;
+                flex: 1;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 0;
+                gap: 15px;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .buttons {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 0;
+                gap: 15px;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 998;
+            }
+
+            .buttons.active {
+                transform: translateY(0);
+            }
+
+            .blog-section {
+                padding: clamp(60px, 12vw, 80px) 3% 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                max-width: 100%;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-post {
+                padding: 15px;
+            }
+
+            .social-media {
+                flex-direction: row;
+                bottom: 10px;
+                right: 10px;
+                gap: 8px;
+            }
+
+            .social-media a {
+                width: 35px;
+                height: 35px;
+            }
+
+            .social-media img {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header Section -->
+<div class="header">
+    <div class="logo">
+        <img src="./images/gallery/favicon.ico" alt="Mirissa Jetliner Favicon">
+        <span>Mirissa Jetliner</span>
+    </div>
+
+    <button class="mobile-menu-btn" id="menuToggle">☰</button>
+
+    <nav class="nav-menu" id="navMenu">
+        <a href="index.html#tours">Tours</a>
+        <a href="index.html#about">About Us</a>
+        <a href="gallery.html">Gallery</a>
+    </nav>
+
+
+</div>
+
+<!-- Blog Section -->
+<div class="blog-section">
+    <h1>Whales and Dolphins of Sri Lanka</h1>
+    <a href="#" class="contact-card">
+        <span>mirissajetliner@gmail.com</span>
+        <span>+94 123 456 789</span>
+    </a>
+    <div class="hero-buttons">
+        <a href="blog.html" class="btn blog-button">Blog</a>
+        <a href="book-now.html" class="btn book-now">Book Now</a>
+    </div>
+    <div class="blog-grid">
+        <div class="blog-post">
+            <h2>Blue Whale</h2>
+            <p>The blue whale (Balaenoptera musculus) is the largest animal on Earth, growing up to 30 meters and weighing over 200 tonnes. In Sri Lanka, they are a highlight of Mirissa (November–April) and Trincomalee (May–October) tours due to krill-rich waters. They feed primarily on krill, consuming up to 4 tonnes daily.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Endangered (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Often seen breaching or diving, with dives lasting 10–20 minutes</li>
+                <li><strong>Fun Fact</strong>: Their heart can weigh as much as a car</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/5z5oQjX0x6g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Blue whale breaching off Mirissa, Sri Lanka</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=5z5oQjX0x6g" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Sperm Whale</h2>
+            <p>Sperm whales (Physeter macrocephalus) are the second most common whales in Sri Lanka, frequently spotted off Mirissa and Trincomalee. They grow up to 20 meters and are known for their deep dives (up to 3 km) to hunt squid. Mating pods are often seen in Trincomalee (June–October).</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Vulnerable (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Social, often seen in pods; males are solitary</li>
+                <li><strong>Fun Fact</strong>: Their head contains spermaceti, used for echolocation</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/4q6M3n4z0fQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Sperm whale pod in Sri Lankan waters</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=4q6M3n4z0fQ" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Bryde’s Whale</h2>
+            <p>Bryde’s whales (Balaenoptera edeni) are slender baleen whales, reaching 15 meters. They are opportunistically sighted during Mirissa tours (November–April) while feeding on schooling fish like sardines. Their elusive nature makes sightings special.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Least Concern (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Surface feeders, often lunging into fish schools</li>
+                <li><strong>Fun Fact</strong>: Pronounced “Broo-dess,” named after Johan Bryde</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/8wI6z2ZLEqI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Bryde’s whale feeding behavior (general footage)</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=8wI6z2ZLEqI" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Humpback Whale</h2>
+            <p>Humpback whales (Megaptera novaeangliae) are known for their acrobatic breaches and long pectoral fins, growing up to 16 meters. They are occasionally seen off Mirissa and Kalpitiya (November–April), singing complex songs during migration.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Least Concern (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Famous for breaching and tail-slapping</li>
+                <li><strong>Fun Fact</strong>: Their songs can travel up to 10 km underwater</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/xo2b2bViSng" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Humpback whale breaching (general footage)</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=xo2b2bViSng" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Fin Whale</h2>
+            <p>Fin whales (Balaenoptera physalus), the second-largest whale species, reach 27 meters. They are less common in Sri Lanka but spotted off the southern coast (November–April). They are fast swimmers, feeding on krill and small fish.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Vulnerable (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Often seen in small groups, with streamlined bodies</li>
+                <li><strong>Fun Fact</strong>: Known as the “greyhound of the sea” for their speed</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/5yKXfsjAJ2U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Fin whale swimming (general footage)</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=5yKXfsjAJ2U" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Sei Whale</h2>
+            <p>Sei whales (Balaenoptera borealis) are sleek, fast swimmers growing up to 20 meters. Rarely seen in Sri Lanka, they may appear off the southern coast (November–April), feeding on krill and copepods.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Endangered (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Skittish, avoiding boats; prefer deep waters</li>
+                <li><strong>Fun Fact</strong>: Named after the Norwegian word for pollock fish</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/7oK3bWPEY1g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Sei whale surfacing (general footage)</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=7oK3bWPEY1g" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Killer Whale (Orca)</h2>
+            <p>Killer whales (Orcinus orca) are rare in Sri Lankan waters but occasionally spotted off Mirissa and Trincomalee. Growing up to 9 meters, these social predators are known for their black-and-white coloration and complex hunting strategies.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Data Deficient (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Travel in pods, hunt fish, seals, and even other whales</li>
+                <li><strong>Fun Fact</strong>: Each pod has unique vocal dialects</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/JZ0aQ2XqW0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Killer whale pod behavior (general footage)</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=JZ0aQ2XqW0M" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Pilot Whale</h2>
+            <p>Pilot whales (Globicephala spp.), including short-finned and long-finned varieties, grow up to 7 meters. They are social, occasionally seen off Kalpitiya, with strandings linked to seismic activity in Sri Lankan waters.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Least Concern (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Highly social, often in pods of 20–100</li>
+                <li><strong>Fun Fact</strong>: Named for their “pilot” role leading pods</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/8QJ_9vZ8g0I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Pilot whale pod swimming (general footage)</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=8QJ_9vZ8g0I" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Spinner Dolphin</h2>
+            <p>Spinner dolphins (Stenella longirostris) are a highlight of Sri Lanka’s whale watching tours, especially in Mirissa and Kalpitiya (November–April). Growing up to 2.7 meters, they are known for their acrobatic spins and large pods.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Data Deficient (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Perform spinning leaps; feed on small fish at night</li>
+                <li><strong>Fun Fact</strong>: Pods can number in the hundreds in Sri Lanka</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/z8sI0x07XGU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Spinner dolphins leaping in Sri Lankan waters</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=z8sI0x07XGU" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Bottlenose Dolphin</h2>
+            <p>Bottlenose dolphins (Tursiops truncatus) are commonly seen in Kalpitiya and Trincomalee, growing up to 4 meters. Their intelligence and playful behavior make them a favorite on tours.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Least Concern (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Social, often bow-riding near boats</li>
+                <li><strong>Fun Fact</strong>: Use echolocation to find fish prey</li>
+            </ul>
+            <div class="video-container">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/5f0sZ8zq8k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">Bottlenose dolphins in coastal waters (general footage)</p>
+            <div class="video-link">
+                <a href="https://www.youtube.com/watch?v=5f0sZ8zq8k" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+        <div class="blog-post">
+            <h2>Whale Watching Tips for Tourists</h2>
+            <p>Maximize your whale watching experience in Sri Lanka with these tips:</p>
+            <ul>
+                <li><strong>Best Seasons</strong>: Visit Mirissa or Kalpitiya (November–April) for blue whales, humpbacks, and spinner dolphins; Trincomalee (May–October) for sperm whales and bottlenose dolphins.</li>
+                <li><strong>What to Bring</strong>: Sunscreen, hat, binoculars, camera, and anti-seasickness medication.</li>
+                <li><strong>Ethical Practices</strong>: Choose operators maintaining a 100-meter distance from cetaceans and avoiding chases to reduce stress on animals.</li>
+                <li><strong>Timing</strong>: Early morning tours (6–7 AM departure) offer calmer seas and better sightings.</li>
+                <li><strong>Expectations</strong>: Sightings aren’t guaranteed, but Mirissa boasts a 90% success rate for blue whales in season.</li>
+            </ul>
+            <p>Book with <a href="book-now.html">Ocean Explorer</a> for a guided, eco-friendly tour!</p>
+        </div>
+        <div class="blog-post">
+            <h2>Responsible Whale Watching and Conservation</h2>
+            <p>Whale watching in Sri Lanka is thrilling, but unsustainable practices harm cetaceans. Issues include:</p>
+            <ul>
+                <li><strong>Ship Strikes</strong>: Large vessels in Sri Lanka’s busy shipping lanes (e.g., near Trincomalee) pose collision risks, especially for blue and fin whales.</li>
+                <li><strong>Noise Pollution</strong>: Boat engines disrupt whale communication, affecting species like sperm whales that rely on echolocation.</li>
+                <li><strong>Overcrowding</strong>: Too many boats in Mirissa can stress whales, causing avoidance behaviors.</li>
+            </ul>
+            <p>Ocean Explorer is committed to conservation by:</p>
+            <ul>
+                <li>Adhering to Whale and Dolphin Conservation Society (WDCS) guidelines, maintaining sympathetic distances.</li>
+                <li>Partnering with local conservation groups to monitor cetacean populations.</li>
+                <li>Educating tourists on sustainable practices to protect Sri Lanka’s marine life.</li>
+            </ul>
+            <p>Join us at <a href="book-now.html">Ocean Explorer</a> to support eco-friendly tourism and preserve Sri Lanka’s cetaceans for future generations!</p>
+        </div>
+    </div>
+</div>
+
+<!-- Social Media Links -->
+<div class="social-media">
+    <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    <a href="https://www.facebook.com/share/1G4xsrWQTt/" target="_blank" title="Facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+    </a>
+    <a href="https://www.tiktok.com/@mirissajetliner" target="_blank" title="TikTok">
+        <img src="./images/tiktok-logo-logo-svgrepo-com.svg" alt="TikTok">
+    </a>
+    <a href="https://www.instagram.com/nihalwalewatching?igsh=MTlsZzdvcTNiMnZ2cg==" target="_blank" title="Instagram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+    </a>
+    <a href="https://www.tripadvisor.com/Profile/jetlinermirissa" target="_blank" title="Tripadvisor">
+        <img src="./images/trip-advisor-svgrepo-com%20(2).svg" alt="Tripadvisor">
+    </a>
+    <a href="https://www.youtube.com/channel/UCr-fLwz-vOUq23pK5VtVWiA" target="_blank" title="YouTube">
+        <img src="./images/youtube-svgrepo-com.svg" alt="YouTube">
+    </a>
+</div>
+
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const headerButtons = document.getElementById('headerButtons');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        headerButtons.classList.toggle('active');
+    });
+</script>
+</body>
+</html>
