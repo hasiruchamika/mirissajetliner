@@ -261,28 +261,34 @@
             background: var(--secondary);
         }
 
+
+
+
+
+
         /* Tour Details */
         .tour-details {
             background: var(--dark-bg);
             border-radius: 10px;
-            padding: 20px;
+            padding: 25px; /* Slightly increased padding for larger box */
             margin-top: 20px;
             position: relative;
-            min-height: 200px;
+            min-height: 350px; /* Increased from 200px for taller box */
             box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
             width: 100%;
-            max-width: 800px; /* Increased width to accommodate text */
+            max-width: 1200px; /* Increased from 1000px for wider box */
             margin-left: auto;
             margin-right: auto;
         }
 
         .slide {
             position: absolute;
-            top: 50px;
-            left: 20px;
-            right: 20px;
+            top: 20px; /* Adjusted to fit larger container */
+            left: 15px; /* Adjusted to maintain content spacing */
+            right: 15px; /* Adjusted to maintain content spacing */
             opacity: 0;
             transition: opacity 0.5s ease;
+            min-height: 300px; /* Increased to fill taller container */
         }
 
         .slide.active {
@@ -291,8 +297,8 @@
 
         .tour-details h3 {
             color: var(--primary);
-            font-size: clamp(16px, 3vw, 18px);
-            margin-bottom: 10px;
+            font-size: clamp(18px, 3.2vw, 20px); /* Slightly larger for larger box */
+            margin-bottom: 12px;
         }
 
         .tour-details ul {
@@ -300,10 +306,10 @@
         }
 
         .tour-details li {
-            margin: 8px 0;
-            font-size: clamp(12px, 2vw, 14px);
+            margin: 10px 0; /* Increased spacing for readability */
+            font-size: clamp(13px, 2.2vw, 15px); /* Slightly larger for larger box */
             position: relative;
-            padding-left: 15px;
+            padding-left: 20px; /* Adjusted for larger layout */
         }
 
         .tour-details li::before {
@@ -311,7 +317,37 @@
             color: var(--primary);
             position: absolute;
             left: 0;
+            font-size: 18px; /* Slightly larger bullet for scale */
         }
+
+        @media (max-width: 768px) {
+            .tour-details {
+                max-width: 100%; /* Full width on mobile */
+                min-height: 280px; /* Slightly reduced for mobile */
+                padding: 15px; /* Adjusted for mobile */
+            }
+
+            .slide {
+                top: 15px;
+                left: 10px;
+                right: 10px;
+                min-height: 240px; /* Adjusted for mobile */
+            }
+
+            .tour-details h3 {
+                font-size: clamp(16px, 3vw, 18px); /* Revert to original for mobile */
+            }
+
+            .tour-details li {
+                font-size: clamp(12px, 2vw, 14px); /* Revert to original for mobile */
+                margin: 8px 0;
+                padding-left: 15px;
+            }
+        }
+
+
+
+
 
         /* Social Media */
         .social-media {
@@ -452,7 +488,7 @@
             }
 
             .tour-details {
-                max-width: 100%; /* Ensure full width on mobile */
+                max-width: 500%; /* Ensure full width on mobile */
             }
         }
 
@@ -483,7 +519,7 @@
         <a href="gallery.html">Gallery</a>
     </nav>
 
- 
+
 </div>
 
 <!-- Main Content -->
@@ -496,12 +532,10 @@
         <h2 id="heroSubtitle"></h2>
         <p id="heroText"></p>
 
-        <div class="buttons" id="headerButtons">
-            <a href="#" class="contact-card">
-                <span>mirissajetliner@gmail.com</span>
-                <span>+94 123 456 789</span>
-            </a>
-        </div>
+        <a href="#" class="contact-card">
+            <span>mirissajetliner@gmail.com</span>
+            <span>+94 123 456 789</span>
+        </a>
 
         <div class="hero-buttons">
             <a href="blog.html" class="btn blog-button">Blog</a>
@@ -530,8 +564,7 @@
             <h3>We offer You Free</h3>
             <ul>
                 <li>Tea or Coffee</li>
-                <li>Breakfast & Fruits</li>
-                <li>Water & Juice Bottles</li>
+                <li>Breakfast & Fruits & Water & Juice Bottles</li>
                 <li>Sea sick tablets & First aid</li>
                 <li>Free Wifi & Music</li>
                 <li>Life Jackets</li>

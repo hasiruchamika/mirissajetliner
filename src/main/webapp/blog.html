@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore whales and dolphins of Sri Lanka with Mirissa Jetliner. Learn about Blue Whales, Spinner Dolphins, and more with videos and tips for whale watching tours.">
     <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
     <title>Mirissa Jetliner - Whale Watching Blog</title>
@@ -230,12 +231,29 @@
             margin: 10px 0;
         }
 
+        .blog-post .video-container img.thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .blog-post .video-container img.thumbnail:hover {
+            opacity: 0.8;
+        }
+
         .blog-post .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            border-radius: 5px;
         }
 
         .blog-post .video-caption {
@@ -243,6 +261,11 @@
             color: var(--light-text);
             opacity: 0.7;
             margin: 5px 0;
+            text-align: center;
+        }
+
+        .blog-post .video-link {
+            text-align: center;
         }
 
         .blog-post .video-link a {
@@ -430,13 +453,18 @@
         <a href="gallery.html">Gallery</a>
     </nav>
 
-
+    <div class="buttons" id="headerButtons">
+        <a href="mailto:mirissajetliner@gmail.com" class="contact-card">
+            <span>mirissajetliner@gmail.com</span>
+            <span>+94 123 456 789</span>
+        </a>
+    </div>
 </div>
 
 <!-- Blog Section -->
 <div class="blog-section">
     <h1>Whales and Dolphins of Sri Lanka</h1>
-    <a href="#" class="contact-card">
+    <a href="mailto:mirissajetliner@gmail.com" class="contact-card">
         <span>mirissajetliner@gmail.com</span>
         <span>+94 123 456 789</span>
     </a>
@@ -444,6 +472,7 @@
         <a href="blog.html" class="btn blog-button">Blog</a>
         <a href="book-now.html" class="btn book-now">Book Now</a>
     </div>
+
     <div class="blog-grid">
         <div class="blog-post">
             <h2>Blue Whale</h2>
@@ -454,11 +483,12 @@
                 <li><strong>Fun Fact</strong>: Their heart can weigh as much as a car</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/5z5oQjX0x6g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/blue-whale-thumb.jpg" alt="Blue whale breaching off Mirissa" data-video="https://www.youtube.com/embed/BXg6UL2nQ0g">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <p class="video-caption">Blue whale breaching off Mirissa, Sri Lanka</p>
             <div class="video-link">
-                <a href="https://www.youtube.com/watch?v=5z5oQjX0x6g" target="_blank">Watch on YouTube</a>
+                <a href="https://www.youtube.com/watch?v=BXg6UL2nQ0g" target="_blank">Watch on YouTube</a>
             </div>
         </div>
         <div class="blog-post">
@@ -470,7 +500,8 @@
                 <li><strong>Fun Fact</strong>: Their head contains spermaceti, used for echolocation</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/4q6M3n4z0fQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/sperm-whale-thumb.jpg" alt="Sperm whale pod in Sri Lankan waters" data-video="https://www.youtube.com/embed/4q6M3n4z0fQ">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <p class="video-caption">Sperm whale pod in Sri Lankan waters</p>
             <div class="video-link">
@@ -486,9 +517,10 @@
                 <li><strong>Fun Fact</strong>: Pronounced “Broo-dess,” named after Johan Bryde</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/8wI6z2ZLEqI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/brydes-whale-thumb.jpg" alt="Bryde’s whale feeding in Sri Lankan waters" data-video="https://www.youtube.com/embed/8wI6z2ZLEqI">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">Bryde’s whale feeding behavior (general footage)</p>
+            <p class="video-caption">Bryde’s whale feeding in Sri Lankan waters</p>
             <div class="video-link">
                 <a href="https://www.youtube.com/watch?v=8wI6z2ZLEqI" target="_blank">Watch on YouTube</a>
             </div>
@@ -502,9 +534,10 @@
                 <li><strong>Fun Fact</strong>: Their songs can travel up to 10 km underwater</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/xo2b2bViSng" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/humpback-whale-thumb.jpg" alt="Humpback whale breaching off Mirissa" data-video="https://www.youtube.com/embed/xo2b2bViSng">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">Humpback whale breaching (general footage)</p>
+            <p class="video-caption">Humpback whale breaching off Mirissa</p>
             <div class="video-link">
                 <a href="https://www.youtube.com/watch?v=xo2b2bViSng" target="_blank">Watch on YouTube</a>
             </div>
@@ -518,9 +551,10 @@
                 <li><strong>Fun Fact</strong>: Known as the “greyhound of the sea” for their speed</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/5yKXfsjAJ2U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/fin-whale-thumb.jpg" alt="Fin whale swimming in Sri Lankan waters" data-video="https://www.youtube.com/embed/5yKXfsjAJ2U">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">Fin whale swimming (general footage)</p>
+            <p class="video-caption">Fin whale swimming in Sri Lankan waters</p>
             <div class="video-link">
                 <a href="https://www.youtube.com/watch?v=5yKXfsjAJ2U" target="_blank">Watch on YouTube</a>
             </div>
@@ -534,9 +568,10 @@
                 <li><strong>Fun Fact</strong>: Named after the Norwegian word for pollock fish</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/7oK3bWPEY1g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/sei-whale-thumb.jpg" alt="Sei whale surfacing in Sri Lankan waters" data-video="https://www.youtube.com/embed/7oK3bWPEY1g">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">Sei whale surfacing (general footage)</p>
+            <p class="video-caption">Sei whale surfacing in Sri Lankan waters</p>
             <div class="video-link">
                 <a href="https://www.youtube.com/watch?v=7oK3bWPEY1g" target="_blank">Watch on YouTube</a>
             </div>
@@ -550,11 +585,12 @@
                 <li><strong>Fun Fact</strong>: Each pod has unique vocal dialects</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/JZ0aQ2XqW0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/killer-whale-thumb.jpg" alt="Killer whale pod in Sri Lankan waters" data-video="https://www.youtube.com/embed/3__L0oAa2T8">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">Killer whale pod behavior (general footage)</p>
+            <p class="video-caption">Killer whale pod in Sri Lankan waters</p>
             <div class="video-link">
-                <a href="https://www.youtube.com/watch?v=JZ0aQ2XqW0M" target="_blank">Watch on YouTube</a>
+                <a href="https://www.youtube.com/watch?v=3__L0oAa2T8" target="_blank">Watch on YouTube</a>
             </div>
         </div>
         <div class="blog-post">
@@ -566,11 +602,12 @@
                 <li><strong>Fun Fact</strong>: Named for their “pilot” role leading pods</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/8QJ_9vZ8g0I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/pilot-whale-thumb.jpg" alt="Pilot whale pod swimming in Sri Lankan waters" data-video="https://www.youtube.com/embed/0QJ2z8zq8k">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">Pilot whale pod swimming (general footage)</p>
+            <p class="video-caption">Pilot whale pod swimming in Sri Lankan waters</p>
             <div class="video-link">
-                <a href="https://www.youtube.com/watch?v=8QJ_9vZ8g0I" target="_blank">Watch on YouTube</a>
+                <a href="https://www.youtube.com/watch?v=0QJ2z8zq8k" target="_blank">Watch on YouTube</a>
             </div>
         </div>
         <div class="blog-post">
@@ -582,9 +619,10 @@
                 <li><strong>Fun Fact</strong>: Pods can number in the hundreds in Sri Lanka</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/z8sI0x07XGU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/spinner-dolphin-thumb.jpg" alt="Spinner dolphins leaping in Mirissa" data-video="https://www.youtube.com/embed/z8sI0x07XGU">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">Spinner dolphins leaping in Sri Lankan waters</p>
+            <p class="video-caption">Spinner dolphins leaping in Mirissa</p>
             <div class="video-link">
                 <a href="https://www.youtube.com/watch?v=z8sI0x07XGU" target="_blank">Watch on YouTube</a>
             </div>
@@ -598,9 +636,10 @@
                 <li><strong>Fun Fact</strong>: Use echolocation to find fish prey</li>
             </ul>
             <div class="video-container">
-                <iframe loading="lazy" src="https://www.youtube.com/embed/5f0sZ8zq8k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <img class="thumbnail" src="./images/bottlenose-dolphin-thumb.jpg" alt="Bottlenose dolphins in Kalpitiya" data-video="https://www.youtube.com/embed/5f0sZ8zq8k">
+                <iframe loading="lazy" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">Bottlenose dolphins in coastal waters (general footage)</p>
+            <p class="video-caption">Bottlenose dolphins in Kalpitiya</p>
             <div class="video-link">
                 <a href="https://www.youtube.com/watch?v=5f0sZ8zq8k" target="_blank">Watch on YouTube</a>
             </div>
@@ -615,7 +654,7 @@
                 <li><strong>Timing</strong>: Early morning tours (6–7 AM departure) offer calmer seas and better sightings.</li>
                 <li><strong>Expectations</strong>: Sightings aren’t guaranteed, but Mirissa boasts a 90% success rate for blue whales in season.</li>
             </ul>
-            <p>Book with <a href="book-now.html">Ocean Explorer</a> for a guided, eco-friendly tour!</p>
+            <p>Book with <a href="book-now.html">Mirissa Jetliner</a> for a guided, eco-friendly tour!</p>
         </div>
         <div class="blog-post">
             <h2>Responsible Whale Watching and Conservation</h2>
@@ -625,35 +664,35 @@
                 <li><strong>Noise Pollution</strong>: Boat engines disrupt whale communication, affecting species like sperm whales that rely on echolocation.</li>
                 <li><strong>Overcrowding</strong>: Too many boats in Mirissa can stress whales, causing avoidance behaviors.</li>
             </ul>
-            <p>Ocean Explorer is committed to conservation by:</p>
+            <p>Mirissa Jetliner is committed to conservation by:</p>
             <ul>
                 <li>Adhering to Whale and Dolphin Conservation Society (WDCS) guidelines, maintaining sympathetic distances.</li>
                 <li>Partnering with local conservation groups to monitor cetacean populations.</li>
                 <li>Educating tourists on sustainable practices to protect Sri Lanka’s marine life.</li>
             </ul>
-            <p>Join us at <a href="book-now.html">Ocean Explorer</a> to support eco-friendly tourism and preserve Sri Lanka’s cetaceans for future generations!</p>
+            <p>Join us at <a href="book-now.html">Mirissa Jetliner</a> to support eco-friendly tourism and preserve Sri Lanka’s cetaceans for future generations!</p>
         </div>
     </div>
 </div>
 
 <!-- Social Media Links -->
 <div class="social-media">
-    <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp">
+    <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp" aria-label="Follow us on WhatsApp">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
-    <a href="https://www.facebook.com/share/1G4xsrWQTt/" target="_blank" title="Facebook">
+    <a href="https://www.facebook.com/share/1G4xsrWQTt/" target="_blank" title="Facebook" aria-label="Follow us on Facebook">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
     </a>
-    <a href="https://www.tiktok.com/@mirissajetliner" target="_blank" title="TikTok">
+    <a href="https://www.tiktok.com/@mirissajetliner" target="_blank" title="TikTok" aria-label="Follow us on TikTok">
         <img src="./images/tiktok-logo-logo-svgrepo-com.svg" alt="TikTok">
     </a>
-    <a href="https://www.instagram.com/nihalwalewatching?igsh=MTlsZzdvcTNiMnZ2cg==" target="_blank" title="Instagram">
+    <a href="https://www.instagram.com/nihalwalewatching?igsh=MTlsZzdvcTNiMnZ2cg==" target="_blank" title="Instagram" aria-label="Follow us on Instagram">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
     </a>
-    <a href="https://www.tripadvisor.com/Profile/jetlinermirissa" target="_blank" title="Tripadvisor">
+    <a href="https://www.tripadvisor.com/Profile/jetlinermirissa" target="_blank" title="Tripadvisor" aria-label="Read our reviews on Tripadvisor">
         <img src="./images/trip-advisor-svgrepo-com%20(2).svg" alt="Tripadvisor">
     </a>
-    <a href="https://www.youtube.com/channel/UCr-fLwz-vOUq23pK5VtVWiA" target="_blank" title="YouTube">
+    <a href="https://www.youtube.com/channel/UCr-fLwz-vOUq23pK5VtVWiA" target="_blank" title="YouTube" aria-label="Watch our videos on YouTube">
         <img src="./images/youtube-svgrepo-com.svg" alt="YouTube">
     </a>
 </div>
@@ -667,6 +706,16 @@
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         headerButtons.classList.toggle('active');
+    });
+
+    // Thumbnail click to load video
+    document.querySelectorAll('.video-container .thumbnail').forEach(thumbnail => {
+        thumbnail.addEventListener('click', () => {
+            const iframe = thumbnail.nextElementSibling;
+            iframe.src = thumbnail.dataset.video;
+            thumbnail.style.display = 'none';
+            iframe.style.display = 'block';
+        });
     });
 </script>
 </body>
