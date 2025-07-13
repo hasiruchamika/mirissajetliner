@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
     <title>Mirissa Jetliner - Whale Watching Tour</title>
     <style>
         :root {
@@ -22,7 +23,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background: url('images/whale303.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text);
@@ -50,7 +51,7 @@
             align-items: center;
             gap: 8px;
             font-size: clamp(18px, 4vw, 24px);
-            font-weight: bold;
+            font-weight: 600;
             color: var(--primary);
             text-shadow: 0 0 6px var(--primary);
         }
@@ -184,19 +185,18 @@
 
         .hero-buttons {
             display: flex;
-            justify-content: center; /* Center buttons horizontally */
+            justify-content: center;
             align-items: center;
-            gap: 10px; /* Small gap to keep buttons close */
+            gap: 10px;
             width: 100%;
-            max-width: 300px; /* Limit container width to keep buttons near */
+            max-width: 300px;
             margin: 0 auto 20px;
         }
 
         .hero h1, .hero h2 {
             font-size: clamp(28px, 6vw, 48px);
-            background: linear-gradient(to right, #00c4cc, #8a2be2);
+            color: var(--text);
             margin: 5px 0;
-            -webkit-background-clip: text;
             line-height: 1.2;
             overflow: hidden;
             border-right: 3px solid var(--primary);
@@ -206,7 +206,7 @@
 
         .hero p {
             font-size: clamp(18px, 4vw, 24px);
-            color: #270353;
+            color: var(--light-text);
             margin: 5px 0;
             font-weight: 600;
         }
@@ -261,43 +261,22 @@
             background: var(--secondary);
         }
 
-
-
-
-
-
         /* Tour Details */
         .tour-details {
-            background: var(--dark-bg);
-            border-radius: 10px;
-            padding: 25px; /* Slightly increased padding for larger box */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
             margin-top: 20px;
-            position: relative;
-            min-height: 350px; /* Increased from 200px for taller box */
-            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+            padding: 25px;
             width: 100%;
-            max-width: 1200px; /* Increased from 1000px for wider box */
+            max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .slide {
-            position: absolute;
-            top: 20px; /* Adjusted to fit larger container */
-            left: 15px; /* Adjusted to maintain content spacing */
-            right: 15px; /* Adjusted to maintain content spacing */
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            min-height: 300px; /* Increased to fill taller container */
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
         .tour-details h3 {
             color: var(--primary);
-            font-size: clamp(18px, 3.2vw, 20px); /* Slightly larger for larger box */
+            font-size: clamp(18px, 3.2vw, 20px);
             margin-bottom: 12px;
         }
 
@@ -306,10 +285,10 @@
         }
 
         .tour-details li {
-            margin: 10px 0; /* Increased spacing for readability */
-            font-size: clamp(13px, 2.2vw, 15px); /* Slightly larger for larger box */
+            margin: 10px 0;
+            font-size: clamp(13px, 2.2vw, 15px);
             position: relative;
-            padding-left: 20px; /* Adjusted for larger layout */
+            padding-left: 20px;
         }
 
         .tour-details li::before {
@@ -317,37 +296,60 @@
             color: var(--primary);
             position: absolute;
             left: 0;
-            font-size: 18px; /* Slightly larger bullet for scale */
+            font-size: 18px;
         }
 
         @media (max-width: 768px) {
             .tour-details {
-                max-width: 100%; /* Full width on mobile */
-                min-height: 280px; /* Slightly reduced for mobile */
-                padding: 15px; /* Adjusted for mobile */
-            }
-
-            .slide {
-                top: 15px;
-                left: 10px;
-                right: 10px;
-                min-height: 240px; /* Adjusted for mobile */
+                grid-template-columns: 1fr;
+                padding: 15px;
             }
 
             .tour-details h3 {
-                font-size: clamp(16px, 3vw, 18px); /* Revert to original for mobile */
+                font-size: clamp(16px, 3vw, 18px);
             }
 
             .tour-details li {
-                font-size: clamp(12px, 2vw, 14px); /* Revert to original for mobile */
+                font-size: clamp(12px, 2vw, 14px);
                 margin: 8px 0;
                 padding-left: 15px;
             }
+
+            .hero {
+                text-align: center;
+                min-height: 40vh;
+                align-items: center;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                max-width: 100%;
+            }
+
+            .hero h1, .hero h2 {
+                border-right: none;
+                width: auto;
+                white-space: normal;
+                text-align: center;
+            }
+
+            .tour-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .social-media {
+                flex-direction: row;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .social-media a {
+                width: 35px;
+                height: 35px;
+            }
         }
-
-
-
-
 
         /* Social Media */
         .social-media {
@@ -452,29 +454,6 @@
                 background: var(--dark-bg);
             }
 
-            .hero {
-                text-align: center;
-                min-height: 40vh;
-                align-items: center;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                max-width: 100%; /* Ensure buttons fit on mobile */
-            }
-
-            .hero h1, .hero h2 {
-                border-right: none;
-                width: auto;
-                white-space: normal;
-                text-align: center;
-            }
-
-            .tour-cards {
-                grid-template-columns: 1fr;
-            }
 
             .social-media {
                 flex-direction: row;
@@ -487,10 +466,9 @@
                 height: 35px;
             }
 
-            .tour-details {
-                max-width: 500%; /* Ensure full width on mobile */
-            }
         }
+
+
 
         /* Animations */
         @keyframes fadeIn {
@@ -501,114 +479,128 @@
         .fade-in {
             animation: fadeIn 0.8s ease forwards;
         }
+
+        /* Cursor style */
+        .cursor {
+            animation: blink 0.7s infinite;
+            color: var(--primary);
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
 <!-- Header -->
 <div class="header">
     <div class="logo">
-        <img src="./images/gallery/favicon.ico" alt="Logo">
+        <img src="./images/gallery/favicon.ico" alt="Mirissa Jetliner Logo">
         <span>Mirissa Jetliner</span>
     </div>
 
     <button class="mobile-menu-btn" id="menuToggle">☰</button>
 
     <nav class="nav-menu" id="navMenu">
-        <a href="index.html#tours">Tours</a>
+        <a href="#tours">Tours</a>
         <a href="about us.html">About Us</a>
         <a href="gallery.html">Gallery</a>
     </nav>
-
-
 </div>
 
 <!-- Main Content -->
 <main class="main-content">
     <!-- Hero Section -->
     <section class="hero fade-in">
-
-
-        <h1 id="heroTitle"></h1>
-        <h2 id="heroSubtitle"></h2>
-        <p id="heroText"></p>
-
+        <h1 id="heroTitle">Unforgettable Whale Watching</h1>
+        <h2 id="heroSubtitle">Mirissa’s Premier Tours</h2>
+        <p id="heroText">Encounter majestic blue whales and playful spinner dolphins in Sri Lanka’s pristine waters. Book now for an adventure of a lifetime!</p>
         <a href="#" class="contact-card">
-            <span>mirissajetliner@gmail.com</span>
-            <span>+94 123 456 789</span>
+            <span>wowwhales@gmail.com</span>
+            <span>+94 777 728 439</span>
         </a>
-
         <div class="hero-buttons">
-            <a href="blog.html" class="btn blog-button">Blog</a>
-            <a href="book-now.html" class="btn book-now">Book Now</a>
-        </div>
+            <a href="blog.html" class="btn blog-button">Learn More</a>
+            <a href="book-now.html" class="btn book-now">See Prices & Book</a>
 
+        </div>
     </section>
 
-    <!-- Tour Cards -->
-    <div class="tour-cards fade-in">
-        <div class="card">
-            <h3>Half Ticket</h3>
-            <p>Age Range: ≤ 12 years old</p>
-            <button>$20 per person</button>
-        </div>
+
+
+    <!--
+
+    <section id="tours" class="tour-cards fade-in">
         <div class="card">
             <h3>Adult Ticket</h3>
-            <p>Age Range: > 12 years old</p>
-            <button>$40 per person</button>
+            <p>Age: > 12 years</p>
+            <p>LKR 7,500 per person</p>
+            <p>Includes breakfast, Wi-Fi, and more!</p>
+            <button onclick="window.location.href='book-now.html'">Book Now</button>
         </div>
-    </div>
+        <div class="card">
+            <h3>Half Ticket</h3>
+            <p>Age: ≤ 12 years</p>
+            <p>LKR 4,000 per person</p>
+            <p>Includes breakfast, Wi-Fi, and more!</p>
+            <button onclick="window.location.href='book-now.html'">Book Now</button>
+        </div>
+    </section>
+
+    -->
 
     <!-- Tour Details -->
-    <div class="tour-details fade-in">
-        <div class="slide active">
-            <h3>We offer You Free</h3>
+    <section class="tour-details fade-in">
+        <div class="card">
+            <h3>Inclusions (Free)</h3>
             <ul>
                 <li>Tea or Coffee</li>
-                <li>Breakfast & Fruits & Water & Juice Bottles</li>
+                <li>Breakfast, Fruits, Water & Juice Bottles</li>
                 <li>Sea sick tablets & First aid</li>
-                <li>Free Wifi & Music</li>
+                <li>Free Wi-Fi & Music</li>
                 <li>Life Jackets</li>
                 <li>Life Insurance</li>
                 <li>Transport (around 3km)</li>
                 <li>Toilet Facilities</li>
             </ul>
         </div>
-        <div class="slide">
+        <div class="card">
             <h3>Tour Details</h3>
             <ul>
-                <li>Boat departure time is everyday 6:30 am from Mirissa Harbour</li>
-                <li>You have to be Harbour at 6:00 am</li>
-                <li>Our company provide free transport (around 3km)</li>
-                <li>Tour time around 3 to 5 hours</li>
-                <li>Maximum passenger 120</li>
-                <li>Please book your seat before the tour date</li>
-                <li>For booking Contact our hotline or Email</li>
-                <li>We followed international whale watching guidelines</li>
+                <li>Daily departure: 6:30 AM from Mirissa Harbour</li>
+                <li>Arrive by 6:00 AM</li>
+                <li>Free transport provided (around 3km)</li>
+                <li>Tour duration: 3–5 hours</li>
+                <li>Maximum 120 passengers</li>
+                <li>Pre-booking required</li>
+                <li>Contact via hotline or email</li>
+                <li>Follows international whale watching guidelines</li>
             </ul>
         </div>
-        <div class="slide">
-            <h3>Why Our Boat is Special?</h3>
+        <div class="card">
+            <h3>Why Our Boat is Special</h3>
             <ul>
-                <li>We have only Upper Deck Seats</li>
-                <li>Specially Designed for Whale Watching</li>
-                <li>No Vibration, No Capsize, Good Balancing</li>
-                <li>2 Engines (1700HP total) 15 Knots Speed</li>
+                <li>Upper Deck Seats only</li>
+                <li>Designed for whale watching</li>
+                <li>No vibration, no capsize, excellent balance</li>
+                <li>2 Engines (1700HP total), 15 knots speed</li>
                 <li>Luxury experience with maximum comfort</li>
                 <li>Comprehensive passenger insurance</li>
             </ul>
         </div>
-        <div class="slide">
-            <h3>Our Crew (10 Years experience)</h3>
+        <div class="card">
+            <h3>Our Crew (10+ Years Experience)</h3>
             <ul>
-                <li>2 Coxswains - Sri Lanka tourist board</li>
-                <li>2 Life Guards - Wild life department</li>
-                <li>1 Marine Engineer - Coastguard</li>
-                <li>1 Zoologist - Harbour cooperation</li>
+                <li>2 Coxswains (Sri Lanka Tourist Board)</li>
+                <li>2 Life Guards (Wildlife Department)</li>
+                <li>1 Marine Engineer (Coastguard)</li>
+                <li>1 Zoologist (Harbour Cooperation)</li>
                 <li>Sri Lanka Insurance</li>
-                <li>Sri Lanka boat operator society</li>
+                <li>Sri Lanka Boat Operator Society</li>
             </ul>
         </div>
-    </div>
+    </section>
 </main>
 
 <!-- Social Media -->
@@ -637,11 +629,9 @@
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    const headerButtons = document.getElementById('headerButtons');
 
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        headerButtons.classList.toggle('active');
     });
 
     // Enhanced Typewriter effect with cursor
@@ -688,35 +678,21 @@
         }, delay);
     }
 
-    // Slide rotation
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function rotateSlides() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-
     // Initialize with improved timing
     document.addEventListener('DOMContentLoaded', function() {
         // Start the typewriter sequence
-        typeWriter(document.getElementById('heroTitle'), 'Whale Watching', 100);
+        typeWriter(document.getElementById('heroTitle'), 'Unforgettable Whale Watching', 100);
 
         // Calculate delay based on first text length (100ms per char + 500ms pause)
-        const firstTextDelay = 'Whale Watching'.length * 100 + 500;
-        typeWriter(document.getElementById('heroSubtitle'), 'Tour Company', 100, firstTextDelay);
+        const firstTextDelay = 'Unforgettable Whale Watching'.length * 100 + 500;
+        typeWriter(document.getElementById('heroSubtitle'), 'Mirissa’s Premier Tours', 100, firstTextDelay);
 
         // Calculate delay based on second text length
-        const secondTextDelay = firstTextDelay + 'Tour Company'.length * 100 + 500;
-        typeWriter(document.getElementById('heroText'), 'Premium Touring', 100, secondTextDelay);
-
-        // Start slide rotation
-        setInterval(rotateSlides, 5000);
+        const secondTextDelay = firstTextDelay + 'Mirissa’s Premier Tours'.length * 100 + 500;
+        typeWriter(document.getElementById('heroText'), 'Encounter majestic blue whales and playful spinner dolphins in Sri Lanka’s pristine waters. Book now for an adventure of a lifetime!', 50, secondTextDelay);
 
         // Add scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -730,20 +706,6 @@
             observer.observe(el);
         });
     });
-
-    // Add cursor style
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .cursor {
-            animation: blink 0.7s infinite;
-            color: var(--primary);
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
 </script>
 </body>
 </html>

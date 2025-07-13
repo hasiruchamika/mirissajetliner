@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
-  <title>Book Now - Mirissa Jetliner Whale Watching</title>
+  <title>See Prices & Book - Mirissa Jetliner Whale Watching</title>
   <script src="https://js.stripe.com/v3/"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
   <style>
@@ -97,14 +97,63 @@
       width: 100%;
     }
 
-    .buttons {
+    /* Hero Section */
+    .hero {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 50vh;
+      position: relative;
+      padding: 20px 5%;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 6vw, 48px);
+      color: var(--text);
+      margin: 20px 0 5px; /* Added margin-top to shift title down */
+      line-height: 1.2;
+      overflow: hidden;
+      border-right: 3px solid var(--primary);
+      white-space: nowrap;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h2 {
+      font-size: clamp(28px, 6vw, 48px);
+      color: var(--text);
+      margin: 5px 0;
+      line-height: 1.2;
+      overflow: hidden;
+      border-right: 3px solid var(--primary);
+      white-space: nowrap;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero p {
+      font-size: clamp(18px, 4vw, 24px);
+      color: var(--light-text);
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
       align-items: center;
       gap: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin: 20px auto;
     }
 
     .btn {
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 20px;
       font-weight: 600;
       font-size: clamp(12px, 2vw, 14px);
@@ -114,14 +163,67 @@
       text-align: center;
     }
 
-    .blog-button {
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      background: transparent;
+    .book-now {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 0 8px var(--primary);
+      border: none;
     }
 
-    .blog-button:hover {
-      background: rgba(0, 196, 204, 0.2);
+    .book-now:hover {
+      box-shadow: 0 0 12px var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      padding: 0 5%;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--dark-bg);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 196, 204, 0.4);
+    }
+
+    .card h3 {
+      font-size: clamp(16px, 3vw, 18px);
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: clamp(12px, 2vw, 14px);
+      margin-bottom: 12px;
+    }
+
+    .card button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 8px;
+      width: 100%;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-weight: 600;
+    }
+
+    .card button:hover {
+      background: var(--secondary);
     }
 
     /* Booking Section */
@@ -129,8 +231,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: clamp(80px, 15vw, 100px) 5% 50px;
+      padding: 0 5% 50px;
       flex-direction: column;
       gap: 20px;
     }
@@ -211,31 +312,8 @@
       color: var(--secondary);
     }
 
-    .tour-info {
-      background: var(--dark-bg);
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
-      width: 100%;
-      max-width: 400px;
-      text-align: left;
-      margin-bottom: 20px;
-    }
-
-    .tour-info h3 {
-      font-size: clamp(18px, 3vw, 22px);
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .tour-info p {
-      font-size: clamp(12px, 2vw, 14px);
-      color: var(--light-text);
-      margin: 5px 0;
-    }
-
     .booking-summary {
-      background: var(--dark-bg);
+      background: var(--card-bg);
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
@@ -313,7 +391,7 @@
     @media (max-width: 768px) {
       .header {
         flex-wrap: wrap;
-        padding: 10px 3%;
+        padding: 10px;
       }
 
       .mobile-menu-btn {
@@ -331,7 +409,7 @@
         top: 60px;
         left: 0;
         width: 100%;
-        background: var(--dark-bg);
+        background: rgba(0, 0, 0, 0.9);
         flex-direction: column;
         align-items: center;
         padding: 15px 0;
@@ -345,31 +423,43 @@
         transform: translateY(0);
       }
 
-      .buttons {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: var(--dark-bg);
-        flex-direction: column;
+      .hero {
+        text-align: center;
+        min-height: 50vh;
         align-items: center;
-        padding: 15px 0;
-        gap: 15px;
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
-        z-index: 998;
       }
 
-      .buttons.active {
-        transform: translateY(0);
+      .hero h1 {
+        margin-top: 30px; /* Reduced margin-top for mobile */
+        border-right: none;
+        width: auto;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .hero h2 {
+        border-right: none;
+        width: auto;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        max-width: 100%;
+      }
+
+      .pricing-section {
+        grid-template-columns: 1fr;
       }
 
       .booking-section {
-        padding: clamp(60px, 12vw, 80px) 3% 30px;
+        padding: 0 3% 30px;
       }
 
       .booking-form,
-      .tour-info,
       .booking-summary {
         width: 90%;
         padding: 15px;
@@ -379,26 +469,41 @@
         flex-direction: row;
         bottom: 10px;
         right: 10px;
-        gap: 8px;
       }
 
       .social-media a {
         width: 35px;
         height: 35px;
       }
+    }
 
-      .social-media img {
-        width: 18px;
-        height: 18px;
-      }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Cursor style */
+    .cursor {
+      animation: blink 0.7s infinite;
+      color: var(--primary);
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
   </style>
 </head>
 <body>
-<!-- Header Section -->
+<!-- Header -->
 <div class="header">
   <div class="logo">
-    <img src="./images/gallery/favicon.ico" alt="Mirissa Jetliner Favicon">
+    <img src="./images/gallery/favicon.ico" alt="Mirissa Jetliner Logo">
     <span>Mirissa Jetliner</span>
   </div>
 
@@ -409,78 +514,100 @@
     <a href="index.html#about">About Us</a>
     <a href="gallery.html">Gallery</a>
   </nav>
-
 </div>
 
-<!-- Booking Section -->
-<div class="booking-section">
-  <div class="tour-info">
-    <h3>3-Hour Whale Watching Experience</h3>
-    <p>Depart from Mirissa Jetty for an unforgettable adventure to see whales and dolphins in their natural habitat.</p>
-    <p><strong>Price per Person:</strong></p>
-    <p>Adult: LKR 7,500</p>
-    <p>Half Ticket (Child under 10): LKR 4,000</p>
-  </div>
+<!-- Main Content -->
+<main class="main-content">
+  <!-- Hero Section -->
+  <section class="hero fade-in">
+    <h1 id="heroTitle">Unforgettable Whale Watching</h1>
+    <h2 id="heroSubtitle">Mirissa’s Premier Tours</h2>
+    <p id="heroText">Encounter majestic blue whales and playful spinner dolphins in Sri Lanka’s pristine waters. Book now for an adventure of a lifetime!</p>
+    <div class="hero-buttons">
+      <a href="#pricing" class="btn book-now">See Prices & Book</a>
+    </div>
+  </section>
 
-  <div class="booking-form">
-    <h2>Book Your Whale Watching Tour</h2>
-    <div id="error-message" class="error"></div>
-    <label for="name">Full Name</label>
-    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing-section fade-in">
+    <div class="card">
+      <h3>Adult Ticket</h3>
+      <p>Age: > 12 years</p>
+      <p>LKR 7,500 per person</p>
+      <p>Includes breakfast, Wi-Fi, and more!</p>
+      <button onclick="window.location.href='#booking'">Book Now</button>
+    </div>
+    <div class="card">
+      <h3>Half Ticket</h3>
+      <p>Age: ≤ 12 years</p>
+      <p>LKR 4,000 per person</p>
+      <p>Includes breakfast, Wi-Fi, and more!</p>
+      <button onclick="window.location.href='#booking'">Book Now</button>
+    </div>
+  </section>
 
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+  <!-- Booking Section -->
+  <section id="booking" class="booking-section fade-in">
+    <div class="booking-form">
+      <h2>Book Your Whale Watching Tour</h2>
+      <div id="error-message" class="error"></div>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-    <label for="date">Tour Date</label>
-    <input type="date" id="date" name="date" required>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
 
-    <label for="time">Time Slot</label>
-    <select id="time" name="time" required>
-      <option value="" disabled selected>Select a time slot</option>
-      <option value="07:00">7:00 AM</option>
-      <option value="10:00">10:00 AM</option>
-    </select>
+      <label for="date">Tour Date</label>
+      <input type="date" id="date" name="date" required>
 
-    <label for="adult-tickets">Number of Adult Tickets</label>
-    <select id="adult-tickets" name="adult-tickets" required>
-      <option value="0" selected>0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
+      <label for="time">Time Slot</label>
+      <select id="time" name="time" required>
+        <option value="" disabled selected>Select a time slot</option>
+        <option value="07:00">7:00 AM</option>
+        <option value="10:00">10:00 AM</option>
+      </select>
 
-    <label for="child-tickets">Number of Half Tickets (Child under 10)</label>
-    <select id="child-tickets" name="child-tickets" required>
-      <option value="0" selected>0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
+      <label for="adult-tickets">Number of Adult Tickets</label>
+      <select id="adult-tickets" name="adult-tickets" required>
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
 
-    <button type="button" id="previewBooking">Preview Booking</button>
-  </div>
+      <label for="child-tickets">Number of Half Tickets (Child under 10)</label>
+      <select id="child-tickets" name="child-tickets" required>
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
 
-  <div class="booking-summary" id="bookingSummary">
-    <h3>Booking Summary</h3>
-    <p><strong>Name:</strong> <span id="summaryName"></span></p>
-    <p><strong>Date:</strong> <span id="summaryDate"></span></p>
-    <p><strong>Time:</strong> <span id="summaryTime"></span></p>
-    <p><strong>Adult Tickets:</strong> <span id="summaryAdultTickets"></span> (LKR <span id="summaryAdultPrice"></span>)</p>
-    <p><strong>Child Tickets:</strong> <span id="summaryChildTickets"></span> (LKR <span id="summaryChildPrice"></span>)</p>
-    <p><strong>Total Price:</strong> LKR <span id="summaryTotalPrice"></span></p>
-    <button type="button" id="editBooking">Edit Booking</button>
-    <button type="button" id="payNow">Pay Now</button>
-  </div>
-</div>
+      <button type="button" id="previewBooking">Preview Booking</button>
+    </div>
 
-<!-- Social Media Links -->
+    <div class="booking-summary" id="bookingSummary">
+      <h3>Booking Summary</h3>
+      <p><strong>Name:</strong> <span id="summaryName"></span></p>
+      <p><strong>Date:</strong> <span id="summaryDate"></span></p>
+      <p><strong>Time:</strong> <span id="summaryTime"></span></p>
+      <p><strong>Adult Tickets:</strong> <span id="summaryAdultTickets"></span> (LKR <span id="summaryAdultPrice"></span>)</p>
+      <p><strong>Child Tickets:</strong> <span id="summaryChildTickets"></span> (LKR <span id="summaryChildPrice"></span>)</p>
+      <p><strong>Total Price:</strong> LKR <span id="summaryTotalPrice"></span></p>
+      <button type="button" id="editBooking">Edit Booking</button>
+      <button type="button" id="payNow">Pay Now</button>
+    </div>
+  </section>
+</main>
+
+<!-- Social Media -->
 <div class="social-media">
   <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy">
@@ -512,14 +639,50 @@
   // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
-  const headerButtons = document.getElementById('headerButtons');
 
   menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
-    headerButtons.classList.toggle('active');
   });
 
-  // Form handling
+  // Typewriter effect for hero section
+  function typeWriter(element, text, speed, delay = 0) {
+    setTimeout(() => {
+      let i = 0;
+      element.innerHTML = '';
+
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      cursor.innerHTML = '|';
+      element.appendChild(cursor);
+
+      function type() {
+        if (i < text.length) {
+          const existingCursor = element.querySelector('.cursor');
+          if (existingCursor) {
+            existingCursor.remove();
+          }
+
+          element.innerHTML += text.charAt(i);
+          const newCursor = document.createElement('span');
+          newCursor.className = 'cursor';
+          newCursor.innerHTML = '|';
+          element.appendChild(newCursor);
+
+          i++;
+          setTimeout(type, speed);
+        } else {
+          const finalCursor = element.querySelector('.cursor');
+          if (finalCursor) {
+            finalCursor.remove();
+          }
+        }
+      }
+
+      type();
+    }, delay);
+  }
+
+  // Booking form handling
   const bookingForm = document.querySelector('.booking-form');
   const bookingSummary = document.getElementById('bookingSummary');
   const previewBooking = document.getElementById('previewBooking');
@@ -579,13 +742,12 @@
     const totalPrice = (adultTickets * prices.adult) + (childTickets * prices.child);
 
     try {
-      // Create Stripe Checkout session
       const response = await fetch('/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           items: [
-            { id: 'adult-ticket', quantity: adultTickets, price: prices.adult * 100 }, // Stripe expects price in cents
+            { id: 'adult-ticket', quantity: adultTickets, price: prices.adult * 100 },
             { id: 'child-ticket', quantity: childTickets, price: prices.child * 100 }
           ],
           email: email
@@ -594,7 +756,6 @@
 
       const session = await response.json();
 
-      // Redirect to Stripe Checkout
       const result = await stripe.redirectToCheckout({ sessionId: session.id });
 
       if (result.error) {
@@ -603,7 +764,6 @@
         bookingForm.style.display = 'block';
         bookingSummary.style.display = 'none';
       } else {
-        // Send confirmation email to user and admin
         const bookingId = 'MJ' + Math.random().toString(36).substr(2, 9).toUpperCase();
         const emailParams = {
           booking_id: bookingId,
@@ -616,22 +776,19 @@
           total_price: totalPrice.toLocaleString()
         };
 
-        // Send to user
         await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID_USER', emailParams);
-        // Send to admin
         await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID_ADMIN', {
           ...emailParams,
           to_email: 'mirissajetliner@gmail.com'
         });
 
-        // Show thank you message
         document.querySelector('.booking-section').innerHTML = `
                     <div class="booking-form">
                         <h2>Thank You for Your Booking!</h2>
                         <p>Your booking ID is <strong>${bookingId}</strong>.</p>
                         <p>A confirmation email has been sent to ${email}.</p>
                         <p>We look forward to seeing you on ${date} at ${time}!</p>
-                        <a href="index.html" class="btn book-now-btn">Return to Home</a>
+                        <a href="index.html" class="btn book-now">Return to Home</a>
                     </div>
                 `;
       }
@@ -641,6 +798,31 @@
       bookingForm.style.display = 'block';
       bookingSummary.style.display = 'none';
     }
+  });
+
+  // Initialize with typewriter and scroll animations
+  document.addEventListener('DOMContentLoaded', function() {
+    // Typewriter sequence
+    typeWriter(document.getElementById('heroTitle'), 'Unforgettable Whale Watching', 100);
+    const firstTextDelay = 'Unforgettable Whale Watching'.length * 100 + 500;
+    typeWriter(document.getElementById('heroSubtitle'), 'Mirissa’s Premier Tours', 100, firstTextDelay);
+    const secondTextDelay = firstTextDelay + 'Mirissa’s Premier Tours'.length * 100 + 500;
+    typeWriter(document.getElementById('heroText'), 'Encounter majestic blue whales and playful spinner dolphins in Sri Lanka’s pristine waters. Book now for an adventure of a lifetime!', 50, secondTextDelay);
+
+    // Scroll animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeElements.forEach(el => {
+      observer.observe(el);
+    });
   });
 </script>
 </body>
