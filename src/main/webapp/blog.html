@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore whales and dolphins of Sri Lanka with Mirissa Jetliner’s blog, featuring images of blue whales, spinner dolphins, and more. Learn about these marine species and book your tour.">
+    <meta name="description" content="Explore whales, dolphins, whale sharks, and sea turtles of Sri Lanka with Mirissa Jetliner’s blog, featuring images of blue whales, spinner dolphins, and more. Learn about these marine species and book your tour.">
     <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
     <title>Mirissa Jetliner - Whale Watching Blog</title>
@@ -416,7 +416,6 @@
     <div class="hero-buttons">
         <a href="blog.html" class="btn blog-button">Learn More</a>
         <a href="book-now.html" class="btn book-now">See Prices & Book</a>
-
     </div>
     <div class="blog-grid">
         <div class="blog-post">
@@ -540,6 +539,32 @@
             </div>
         </div>
         <div class="blog-post">
+            <h2>Whale Shark</h2>
+            <p>Whale sharks (Rhincodon typus) are gentle giants, growing up to 12 meters, and are the largest fish in the ocean. They are occasionally spotted off Sri Lanka’s southern coast, particularly near Mirissa and Galle (November–April), feeding on plankton and small fish in warm coastal waters.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Endangered (IUCN Red List)</li>
+                <li><strong>Behavior</strong>: Filter feeders, swimming slowly with mouths open to consume plankton</li>
+                <li><strong>Fun Fact</strong>: Their skin is covered in unique white spots, like a fingerprint</li>
+            </ul>
+            <div class="image-container">
+                <img src="./images/whales/whaleshark.png" alt="Whale shark swimming near Mirissa, Sri Lanka">
+            </div>
+            <p>Book with <a href="book-now.html">Mirissa Jetliner</a> to spot these majestic creatures on our eco-friendly tours!</p>
+        </div>
+        <div class="blog-post">
+            <h2>Sea Turtle</h2>
+            <p>Sea turtles, including green turtles (Chelonia mydas) and hawksbill turtles (Eretmochelys imbricata), are frequently seen in Sri Lanka’s coastal waters near Mirissa and Rekawa. They grow up to 1.5 meters and are vital to marine ecosystems, often spotted during whale watching tours.</p>
+            <ul>
+                <li><strong>Conservation Status</strong>: Endangered (IUCN Red List for both species)</li>
+                <li><strong>Behavior</strong>: Nest on beaches like Rekawa; feed on seagrass, jellyfish, or sponges</li>
+                <li><strong>Fun Fact</strong>: Females return to their birth beach to lay eggs, navigating thousands of miles</li>
+            </ul>
+            <div class="image-container">
+                <img src="./images/whales/seaturtle.jpg" alt="Sea turtle swimming in coastal waters near Mirissa, Sri Lanka">
+            </div>
+            <p>Join <a href="book-now.html">Mirissa Jetliner</a> to see these ancient mariners during your whale watching adventure!</p>
+        </div>
+        <div class="blog-post">
             <h2>Whale Watching Tips for Tourists</h2>
             <p>Maximize your whale watching experience in Sri Lanka with these tips:</p>
             <ul>
@@ -592,7 +617,6 @@
     </a>
 </div>
 
-
 <script>
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -601,7 +625,9 @@
 
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        headerButtons.classList.toggle('active');
+        if (headerButtons) {
+            headerButtons.classList.toggle('active');
+        }
     });
 </script>
 </body>
