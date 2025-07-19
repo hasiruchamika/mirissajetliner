@@ -60,6 +60,7 @@
             color: var(--primary);
             text-shadow: 0 0 6px var(--primary);
         }
+
         .logo img {
             width: clamp(20px, 4vw, 24px);
             height: clamp(20px, 4vw, 24px);
@@ -155,9 +156,6 @@
         .about-section h1 {
             font-size: clamp(28px, 6vw, 48px);
             margin: 0;
-
-            -webkit-background-clip: text;
-
             text-align: center;
         }
 
@@ -265,9 +263,6 @@
             font-size: clamp(24px, 4vw, 32px);
             text-align: center;
             margin-bottom: 30px;
-
-            -webkit-background-clip: text;
-
         }
 
         .gallery-grid {
@@ -393,6 +388,8 @@
             .header {
                 flex-wrap: wrap;
                 padding: 10px;
+                top: 0;
+                margin-top: 0;
             }
 
             .mobile-menu-btn {
@@ -407,7 +404,7 @@
 
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 0;
                 left: 0;
                 width: 100%;
                 background: rgba(0, 0, 0, 0.9);
@@ -415,7 +412,7 @@
                 align-items: center;
                 padding: 15px 0;
                 gap: 15px;
-                transform: translateY(-150%);
+                transform: translateY(-100%);
                 transition: transform 0.3s ease;
                 z-index: 999;
             }
@@ -444,7 +441,7 @@
             }
 
             .main-content {
-                padding: 80px 3% 30px;
+                padding: 120px 3% 30px;
             }
 
             .about-content {
@@ -505,21 +502,10 @@
 
     <nav class="nav-menu" id="navMenu">
         <a href="index.html#tours">Tours</a>
-        <a href="about us.html">About Us</a>
+        <a href="about-us.html">About Us</a>
         <a href="gallery.html">Gallery</a>
     </nav>
-
-
-    <!--
-    <div class="hero-buttons">
-        <a href="blog.html" class="btn blog-button">Learn More</a>
-        <a href="book-now.html" class="btn book-now">See Prices & Book</a>
-
-    </div>
-    -->
-
 </div>
-
 
 <!-- Main Content -->
 <main class="main-content">
@@ -528,12 +514,12 @@
         <h1>About Mirissa Jetliner</h1>
         <div class="about-content">
             <div class="owner-profile">
-                <img src="images/nandana.jpg" alt="" >
+                <img src="images/nandana.jpg" alt="Nihal Nandana">
                 <h2>Nihal Nandana</h2>
             </div>
 
             <h2>Our Mission</h2>
-            <p>At Mirissa Jetliner, we are passionate about providing unforgettable whale watching experiences while prioritizing the conservation of marine life. Operating in Mirissa. we follow international whale watching guidelines (WDCS) to ensure sustainable, eco-friendly tours that respect the ocean's giants.</p>
+            <p>At Mirissa Jetliner, we are passionate about providing unforgettable whale watching experiences while prioritizing the conservation of marine life. Operating in Mirissa, we follow international whale watching guidelines (WDCS) to ensure sustainable, eco-friendly tours that respect the ocean's giants.</p>
 
             <h2>Why Choose Us?</h2>
             <ul>
@@ -553,13 +539,11 @@
 
             <h2>Find Us</h2>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.313516572234!2d80.4574064!3d5.9437746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae177f1742ec689%3A0x1a5b4e6e89db06b4!2sMirissa%20Jet%20Liner!5e0!3m2!1sen!2slk!4v1720686023456" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1mhe12!1m3!1d3966.313516572234!2d80.4574064!3d5.9437746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae177f1742ec689%3A0x1a5b4e6e89db06b4!2sMirissa%20Jet%20Liner!5e0!3m2!1sen!2slk!4v1720686023456" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <p>Join us for a responsible, thrilling adventure with Mirissa Jetliner. <a href="book-now.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">Book your tour today!</a></p>
         </div>
     </section>
-
-
 </main>
 
 <!-- Lightbox -->
@@ -592,16 +576,13 @@
     </a>
 </div>
 
-
 <script>
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    const headerButtons = document.getElementById('headerButtons');
 
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        headerButtons.classList.toggle('active');
     });
 
     // Lightbox functionality
