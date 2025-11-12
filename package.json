@@ -1,0 +1,7 @@
+{
+  "name": "mirissajetliner",
+  "private": true,
+  "scripts": {
+    "build": "echo \"No build required\""
+  }
+}
