@@ -32,8 +32,8 @@ footer{background:var(--dark-bg);padding:20px;margin-top:20px;text-align:center}
 @media(max-width:768px){
   .nav-menu{display:none}
   .nav-menu.active{display:flex;flex-direction:column;position:fixed;top:60px;left:0;width:100%;background:rgba(0,0,0,0.95);padding:12px 0}
-  /* make header slightly translucent on mobile for contrast */
-  .header, header{background:rgba(0,0,0,0.35)}
+  /* keep header transparent on mobile as requested */
+  .header, header{background:transparent}
 }
 
 @media(max-width:768px){
