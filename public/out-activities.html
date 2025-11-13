@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
+    <title>Out Activities — Mirissa Jetliner</title>
+    <meta name="description" content="Explore our out activities: snorkeling, diving, fishing and coastal tours. Safe, guided experiences from Mirissa Harbour.">
+    <style>
+        :root{--primary:#00c4cc;--secondary:#8a2be2;--text:#e0f7fa;--dark-bg:rgba(1,2,2,0.74);--card-bg:rgba(1,2,2,0.29)}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:Roboto, Arial, sans-serif;background:url('images/whale303.jpg') center/cover fixed no-repeat;color:var(--text);min-height:100vh;line-height:1.6}
+        header{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;position:fixed;top:0;width:100%;z-index:100;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px)}
+        .logo a{color:var(--primary);text-decoration:none;font-weight:600;display:flex;gap:8px;align-items:center}
+        .nav-menu{display:flex;gap:14px}
+        .nav-menu a{color:var(--text);text-decoration:none}
+        .mobile-menu-btn{display:none}
+        main{padding:100px 5% 50px}
+        .hero{padding:40px 0;text-align:center}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px}
+        .card{background:var(--dark-bg);padding:18px;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,0.4)}
+        .card h3{color:var(--primary);margin-bottom:8px}
+        .card p{color:#cfeff2}
+        .cta{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:20px;background:linear-gradient(45deg,var(--primary),var(--secondary));color:#fff;text-decoration:none}
+        footer{background:var(--dark-bg);padding:20px;margin-top:30px;text-align:center}
+        @media(max-width:768px){.mobile-menu-btn{display:block}.nav-menu{display:none}.nav-menu.active{display:flex;flex-direction:column;position:fixed;top:60px;left:0;width:100%;background:rgba(0,0,0,0.95);padding:12px 0}}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="./images/gallery/favicon.ico" alt="Mirissa Jetliner" style="width:28px;height:28px">Mirissa Jetliner</a>
+        </div>
+        <button id="menuToggle" class="mobile-menu-btn" aria-controls="navMenu" aria-expanded="false">☰</button>
+        <nav id="navMenu" class="nav-menu" aria-hidden="true">
+            <a href="index.html">Home</a>
+            <a href="about-us.html">About Us</a>
+            <a href="activities.html">Out Activities</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact-us.html">Contact</a>
+            <a href="research.html">Researches</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Out Activities</h1>
+            <p>From snorkeling and diving to offshore fishing and coastal tours — choose your adventure. Our experienced crew and safety-first approach ensure you have a memorable day on the water.</p>
+        </section>
+
+        <section class="grid" aria-labelledby="activities-heading">
+            <div class="card">
+                <h3 id="activities-heading">Snorkeling Trips</h3>
+                <p>Explore vibrant coral reefs and swim alongside tropical fish in protected areas. Guided small-group snorkeling with life jackets and basic training included.</p>
+                <a class="cta" href="book-now.html">Book Snorkeling</a>
+            </div>
+
+            <div class="card">
+                <h3>Scuba Diving</h3>
+                <p>Partnering with certified dive operators for guided dives suitable for beginners and certified divers. Full equipment rental available.</p>
+                <a class="cta" href="book-now.html">Book Diving</a>
+            </div>
+
+            <div class="card">
+                <h3>Deep Sea Fishing</h3>
+                <p>Half-day and full-day fishing charters with experienced crew, modern tackle and fish handling. Ideal for groups and enthusiasts.</p>
+                <a class="cta" href="book-now.html">Book Fishing</a>
+            </div>
+
+            <div class="card">
+                <h3>Coastal Boat Tours</h3>
+                <p>Leisurely coastal cruises for birdwatching, sunset views and family outings. Comfortable seating and refreshments provided.</p>
+                <a class="cta" href="book-now.html">Book Tour</a>
+            </div>
+        </section>
+
+        <section style="margin-top:28px;" class="card">
+            <h3>Safety & What to Expect</h3>
+            <ul style="margin-top:10px;color:#cfeff2">
+                <li>Life jackets for all passengers</li>
+                <li>Pre-trip safety briefing and weather checks</li>
+                <li>Trained crew with first aid kit & sea sickness remedies</li>
+                <li>Maximum group sizes to protect marine habitats</li>
+            </ul>
+            <p style="margin-top:12px">Contact us at <a href="mailto:wowwhales@gmail.com">wowwhales@gmail.com</a> or <a href="tel:+94777728439">+94 777 728 439</a> for custom packages.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div>Mirissa Jetliner — Whale Watching & Sea Activities</div>
+        <div style="margin-top:8px;">No. 126, Kapparathota, Weligama, Sri Lanka | <a href="contact-us.html" style="color:var(--primary)">Contact Us</a></div>
+        <p style="margin-top:12px">&copy; 2025 Mirissa Jetliner</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            navMenu.setAttribute('aria-hidden', String(!isOpen));
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navMenu.setAttribute('aria-hidden', 'true');
+                menuToggle.focus();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
+    <title>Mirissa Jetliner - Gallery</title>
+    <style>
+        :root {
+            --primary: #00c4cc;
+            --secondary: #8a2be2;
+            --text: #e0f7fa;
+            --light-text: #a0d6e8;
+            --dark-bg: rgba(1, 2, 2, 0.74);
+            --card-bg: rgba(1, 2, 2, 0.29);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('images/whale303.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: 0 0 6px var(--primary);
+        }
+        .logo a {
+            text-decoration: none;
+            color: var(--primary);
+            text-shadow: 0 0 6px var(--primary);
+        }
+
+        .logo img {
+            width: clamp(20px, 4vw, 24px);
+            height: clamp(20px, 4vw, 24px);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-menu a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: clamp(12px, 2vw, 14px);
+            transition: color 0.3s;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-card {
+            background: var(--dark-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+            font-size: clamp(12px, 2vw, 14px);
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+            line-height: 1.4;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 15px;
+        }
+
+        .contact-card span {
+            display: block;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 196, 204, 0.4);
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: clamp(12px, 2vw, 14px);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .blog-button {
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            background: transparent;
+        }
+
+        .blog-button:hover {
+            background: rgba(0, 196, 204, 0.2);
+        }
+
+        .book-now {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 0 8px var(--primary);
+            border: none;
+        }
+
+        .book-now:hover {
+            box-shadow: 0 0 12px var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 5% 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .gallery-section h1 {
+            font-size: clamp(28px, 5vw, 36px);
+            margin: 0 0 20px;
+            background: linear-gradient(to right, #00c4cc, #8a2be2);
+            -webkit-background-clip: text;
+            text-align: center;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center; /* Center buttons horizontally */
+            align-items: center;
+            gap: 10px; /* Small gap to keep buttons close */
+            width: 100%;
+            max-width: 300px; /* Limit container width to keep buttons near */
+            margin: 0 auto 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .gallery-item {
+            background: var(--dark-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 196, 204, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 196, 204, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--text);
+            font-size: 30px;
+            cursor: pointer;
+            text-shadow: 0 0 5px var(--primary);
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary);
+        }
+
+        /* Social Media */
+        .social-media {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-media a {
+            width: 40px;
+            height: 40px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+        }
+
+        .social-media a:hover {
+            transform: scale(1.1);
+            background: rgba(0, 196, 204, 0.2);
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                order: 1;
+            }
+
+            .logo {
+                order: 0;
+                flex: 1;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 0;
+                gap: 15px;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .buttons {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 0;
+                gap: 15px;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 998;
+            }
+
+            .buttons.active {
+                transform: translateY(0);
+            }
+
+            .contact-card {
+                background: var(--dark-bg);
+                box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+                text-align: center;
+            }
+
+            .gallery-section {
+                padding: 80px 3% 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                max-width: 100%; /* Ensure buttons fit on mobile */
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-media {
+                flex-direction: row;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .social-media a {
+                width: 35px;
+                height: 35px;
+            }
+
+            .lightbox-close {
+                top: -35px;
+                right: 0;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header Section -->
+<div class="header">
+    <div class="logo">
+        <a href="index.html">
+            <img src="./images/gallery/favicon.ico" alt="Mirissa Jetliner Logo">
+            <span>Mirissa Jetliner</span>
+        </a>
+    </div>
+
+
+    <button class="mobile-menu-btn" id="menuToggle">☰</button>
+
+    <nav class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="out-activities.html">Out Activities</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact-us.html">Contact Us</a>
+        <a href="research.html">Researches</a>
+    </nav>
+
+
+</div>
+
+<!-- Gallery Section -->
+<div class="gallery-section">
+    <h1>Our Vessel and Tour Adventures</h1>
+    <a href="#" class="contact-card">
+        <span>mirissajetliner@gmail.com</span>
+        <span>+94 123 456 789</span>
+    </a>
+    <div class="hero-buttons">
+        <a href="blog.html" class="btn blog-button">Learn More</a>
+        <a href="book-now.html" class="btn book-now">See Prices & Book</a>
+
+    </div>
+    <div class="gallery-grid">
+        <div class="gallery-item" data-full-image="./images/gallery/a1.jpg">
+            <img src="./images/gallery/a1.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a2.jpg">
+            <img src="./images/gallery/a2.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a3.jpg">
+            <img src="./images/gallery/a3.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a4.jpg">
+            <img src="./images/gallery/a4.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a5.jpg">
+            <img src="./images/gallery/a5.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a6.jpg">
+            <img src="./images/gallery/a6.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a7.jpg">
+            <img src="./images/gallery/a7.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a8.jpg">
+            <img src="./images/gallery/a8.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a9.jpg">
+            <img src="./images/gallery/a9.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a10.jpg">
+            <img src="./images/gallery/a10.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a11.jpg">
+            <img src="./images/gallery/a11.jpg">
+        </div>
+        <div class="gallery-item" data-full-image="./images/gallery/a12.jpg">
+            <img src="./images/gallery/a12.jpg">
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <span class="lightbox-close" id="lightboxClose">×</span>
+        <img id="lightbox-image" src="" alt="Lightbox Image">
+    </div>
+</div>
+
+<!-- Social Media -->
+<div class="social-media">
+    <a href="https://wa.me/94777728439" target="_blank" title="WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    <a href="https://www.facebook.com/share/1G4xsrWQTt/" target="_blank" title="Facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+    </a>
+    <a href="https://www.tiktok.com/@mirissajetliner" target="_blank" title="TikTok">
+        <img src="./images/tiktok-logo-logo-svgrepo-com.svg" alt="TikTok">
+    </a>
+    <a href="https://www.instagram.com/nihalwalewatching?igsh=MTlsZzdvcTNiMnZ2cg==" target="_blank" title="Instagram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+    </a>
+    <a href="https://www.tripadvisor.com/Profile/jetlinermirissa" target="_blank" title="Tripadvisor">
+        <img src="./images/trip-advisor-svgrepo-com%20(2).svg" alt="Tripadvisor">
+    </a>
+    <a href="https://www.youtube.com/channel/UCr-fLwz-vOUq23pK5VtVWiA" target="_blank" title="YouTube">
+        <img src="./images/youtube-svgrepo-com.svg" alt="YouTube">
+    </a>
+</div>
+
+
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const headerButtons = document.getElementById('headerButtons');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        headerButtons.classList.toggle('active');
+    });
+
+    // Lightbox functionality
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const fullImage = item.getAttribute('data-full-image');
+            lightboxImage.src = fullImage;
+            lightboxImage.alt = item.querySelector('img').alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+
+    // Lazy loading for images
+    if ('loading' in HTMLImageElement.prototype) {
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+        });
+    } else {
+        // Fallback for browsers that don't support lazy loading
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js';
+        document.body.appendChild(script);
+        script.onload = () => {
+            const observer = lozad();
+            observer.observe();
+        };
+    }
+</script>
+</body>
+</html>

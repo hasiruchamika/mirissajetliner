@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <title>Mirissa Jetliner - Whale Watching Tour</title>
-    <!-- Inline styles preserved for parity with original; main theme also available in styles.css -->
     <style>
         :root {
             --primary: #00c4cc;
@@ -17,8 +15,391 @@
             --dark-bg: rgba(1, 2, 2, 0.74);
             --card-bg: rgba(1, 2, 2, 0.29);
         }
-        /* Minimal inline to ensure page renders if styles.css not loaded immediately */
-        body{font-family:Roboto,Arial,sans-serif;background:#001; color:var(--text);}
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('images/whale303.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: 600;
+            color: var(--primary);
+            text-shadow: 0 0 6px var(--primary);
+        }
+        .logo a {
+            text-decoration: none;
+            color: var(--primary);
+            text-shadow: 0 0 6px var(--primary);
+        }
+
+        .logo img {
+            width: clamp(20px, 4vw, 24px);
+            height: clamp(20px, 4vw, 24px);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-menu a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: clamp(12px, 2vw, 14px);
+            transition: color 0.3s;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .main-content {
+            padding: 100px 5% 50px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 50vh;
+            position: relative;
+            padding: 20px 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .hero h1, .hero h2, .hero p {
+            margin: 5px 0;
+        }
+
+        .contact-card {
+            background: var(--dark-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+            font-size: 14px;
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 15px;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 196, 204, 0.4);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: clamp(12px, 2vw, 14px);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .blog-button {
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            background: transparent;
+        }
+
+        .blog-button:hover {
+            background: rgba(0, 196, 204, 0.2);
+        }
+
+        .book-now {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 0 8px var(--primary);
+            border: none;
+        }
+
+        .book-now:hover {
+            box-shadow: 0 0 12px var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .tour-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tour-details .card {
+            background: var(--dark-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tour-details .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 196, 204, 0.4);
+        }
+
+        .tour-details h3 {
+            color: var(--primary);
+            font-size: clamp(18px, 3.2vw, 20px);
+            margin-bottom: 12px;
+        }
+
+        .tour-details ul {
+            list-style: none;
+        }
+
+        .tour-details li {
+            margin: 10px 0;
+            font-size: clamp(13px, 2.2vw, 15px);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .tour-details li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+
+        footer {
+            background: var(--dark-bg);
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-section h2 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: var(--light-text);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary);
+        }
+
+        .social-media {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-media a {
+            width: 40px;
+            height: 40px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+        }
+
+        .social-media a:hover {
+            transform: scale(1.1);
+            background: rgba(0, 196, 204, 0.2);
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                order: 1;
+            }
+
+            .logo {
+                order: 0;
+                flex: 1;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 0;
+                gap: 15px;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .hero {
+                text-align: center;
+                min-height: 40vh;
+                align-items: center;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                max-width: 100%;
+            }
+
+            .tour-details {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .social-media {
+                flex-direction: row;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .social-media a {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .cursor {
+            animation: blink 0.7s infinite;
+            color: var(--primary);
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -26,14 +407,14 @@
     <div class="logo">
         <a href="index.html">
             <img src="./images/gallery/favicon.ico" alt="Mirissa Jetliner Logo">
-            <span>Mirissa Jetliner</span>
+            <span>mMirissa Jetliner</span>
         </a>
     </div>
-    <button class="mobile-menu-btn" id="menuToggle" aria-controls="navMenu" aria-expanded="false">☰</button>
+    <button class="mobile-menu-btn" id="menuToggle">☰</button>
     <nav class="nav-menu" id="navMenu">
         <a href="index.html">Home</a>
         <a href="about-us.html">About Us</a>
-        <a href="activities.html">Out Activities</a>
+        <a href="out-activities.html">Out Activities</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact-us.html">Contact Us</a>
         <a href="research.html">Researches</a>
@@ -42,13 +423,13 @@
 
 <main class="main-content">
     <section class="hero fade-in">
-        <h1 id="heroTitle">Unforgettable Whale Watching</h1>
-        <h2 id="heroSubtitle">Premium Whale Watching Tours in Mirissa</h2>
-        <p id="heroText">Encounter majestic blue whales and playful spinner dolphins in Sri Lanka’s pristine waters. Book now for an adventure of a lifetime!</p>
-        <div class="contact-card">
-            <a href="mailto:wowwhales@gmail.com">wowwhales@gmail.com</a>
-            <a href="tel:+94777728439">+94 777 728 439</a>
-        </div>
+        <h1 id="heroTitle"></h1>
+        <h2 id="heroSubtitle"></h2>
+        <p id="heroText"></p>
+        <a href="#" class="contact-card">
+            <span>wowwhales@gmail.com</span>
+            <span>+94 777 728 439</span>
+        </a>
         <div class="hero-buttons">
             <a href="blog.html" class="btn blog-button">Learn More</a>
             <a href="book-now.html" class="btn book-now">See Prices & Book</a>
@@ -149,26 +530,83 @@
 </footer>
 
 <div class="social-media">
-    <a href="https://wa.me/94777728439" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+    <a href="https://wa.me/94777728439" target="_blank" title="WhatsApp">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
-    <a href="https://www.facebook.com/share/1G4xsrWQTt/" target="_blank" rel="noopener noreferrer" title="Facebook">
+    <a href="https://www.facebook.com/share/1G4xsrWQTt/" target="_blank" title="Facebook">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
     </a>
-    <a href="https://www.tiktok.com/@mirissajetliner" target="_blank" rel="noopener noreferrer" title="TikTok">
+    <a href="https://www.tiktok.com/@mirissajetliner" target="_blank" title="TikTok">
         <img src="./images/tiktok-logo-logo-svgrepo-com.svg" alt="TikTok">
     </a>
-    <a href="https://www.instagram.com/nihalwalewatching?igsh=MTlsZzdvcTNiMnZ2cg==" target="_blank" rel="noopener noreferrer" title="Instagram">
+    <a href="https://www.instagram.com/nihalwalewatching?igsh=MTlsZzdvcTNiMnZ2cg==" target="_blank" title="Instagram">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
     </a>
-    <a href="https://www.tripadvisor.com/Profile/jetlinermirissa" target="_blank" rel="noopener noreferrer" title="Tripadvisor">
+    <a href="https://www.tripadvisor.com/Profile/jetlinermirissa" target="_blank" title="Tripadvisor">
         <img src="./images/trip-advisor-svgrepo-com%20(2).svg" alt="Tripadvisor">
     </a>
-    <a href="https://www.youtube.com/channel/UCr-fLwz-vOUq23pK5VtVWiA" target="_blank" rel="noopener noreferrer" title="YouTube">
+    <a href="https://www.youtube.com/channel/UCr-fLwz-vOUq23pK5VtVWiA" target="_blank" title="YouTube">
         <img src="./images/youtube-svgrepo-com.svg" alt="YouTube">
     </a>
 </div>
 
-<script src="script.js" defer></script>
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    function typeWriter(element, text, speed, delay = 0) {
+        setTimeout(() => {
+            let i = 0;
+            element.innerHTML = '';
+
+            const cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            cursor.innerHTML = '|';
+            element.appendChild(cursor);
+
+            function type() {
+                if (i < text.length) {
+                    const existingCursor = element.querySelector('.cursor');
+                    if (existingCursor) existingCursor.remove();
+                    element.innerHTML += text.charAt(i);
+                    const newCursor = document.createElement('span');
+                    newCursor.className = 'cursor';
+                    newCursor.innerHTML = '|';
+                    element.appendChild(newCursor);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    const finalCursor = element.querySelector('.cursor');
+                    if (finalCursor) finalCursor.remove();
+                }
+            }
+            type();
+        }, delay);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        typeWriter(document.getElementById('heroTitle'), 'Unforgettable Whale Watching', 100);
+        const firstDelay = 'Unforgettable Whale Watching'.length * 100 + 500;
+        typeWriter(document.getElementById('heroSubtitle'), 'Premium Whale Watching Tours in Mirissa', 100, firstDelay);
+        const secondDelay = firstDelay + 'Premium Whale Watching Tours in Mirissa'.length * 100 + 500;
+        typeWriter(document.getElementById('heroText'), 'Encounter majestic blue whales and playful spinner dolphins in Sri Lanka’s pristine waters. Book now for an adventure of a lifetime!', 50, secondDelay);
+
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+    });
+</script>
 </body>
 </html>
