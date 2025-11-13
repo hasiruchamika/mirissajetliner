@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./images/gallery/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Mirissa Jetliner - Whale Watching Tour</title>
     <style>
         :root {
@@ -291,30 +292,35 @@
             right: 20px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             z-index: 1000;
+            pointer-events: auto;
         }
 
         .social-media a {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: var(--dark-bg);
             border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
-            box-shadow: 0 0 8px rgba(0, 196, 204, 0.3);
+            transition: transform 0.18s ease, background 0.18s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+            padding: 6px;
         }
 
         .social-media a:hover {
-            transform: scale(1.1);
-            background: rgba(0, 196, 204, 0.2);
+            transform: translateY(-3px) scale(1.04);
+            background: rgba(0, 196, 204, 0.12);
         }
 
-        .social-media img {
-            width: 20px;
-            height: 20px;
+        .social-media img,
+        .social-media svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+            object-fit: contain;
         }
 
         @media (max-width: 768px) {
@@ -491,22 +497,22 @@
 
 
 <div class="social-media">
-    <a href="https://wa.me/94777728439" target="_blank" title="WhatsApp">
+    <a href="https://wa.me/94777728439" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
-    <a href="https://www.facebook.com/share/1G4xsrWQTt/" target="_blank" title="Facebook">
+    <a href="https://www.facebook.com/share/1G4xsrWQTt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
     </a>
-    <a href="https://www.tiktok.com/@mirissajetliner" target="_blank" title="TikTok">
+    <a href="https://www.tiktok.com/@mirissajetliner" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
         <img src="./images/tiktok-logo-logo-svgrepo-com.svg" alt="TikTok">
     </a>
-    <a href="https://www.instagram.com/nihalwalewatching?igsh=MTlsZzdvcTNiMnZ2cg==" target="_blank" title="Instagram">
+    <a href="https://www.instagram.com/nihalwalewatching?igsh=MTlsZzdvcTNiMnZ2cg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
     </a>
-    <a href="https://www.tripadvisor.com/Profile/jetlinermirissa" target="_blank" title="Tripadvisor">
+    <a href="https://www.tripadvisor.com/Profile/jetlinermirissa" target="_blank" rel="noopener noreferrer" aria-label="Tripadvisor" title="Tripadvisor">
         <img src="./images/trip-advisor-svgrepo-com%20(2).svg" alt="Tripadvisor">
     </a>
-    <a href="https://www.youtube.com/channel/UCr-fLwz-vOUq23pK5VtVWiA" target="_blank" title="YouTube">
+    <a href="https://www.youtube.com/channel/UCr-fLwz-vOUq23pK5VtVWiA" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
         <img src="./images/youtube-svgrepo-com.svg" alt="YouTube">
     </a>
 </div>
