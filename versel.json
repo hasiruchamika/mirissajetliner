@@ -1,9 +1,0 @@
-{
-  "builds": [
-    {
-      "src": "src/main/webapp/package.json",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["src/main/webapp/**"] }
-    }
-  ]
-}
