@@ -12,7 +12,7 @@ body{
   color:var(--text);
   background:url('images/whale303.jpg') center/cover no-repeat fixed;
 }
-.header, header{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;position:fixed;top:0;width:100%;z-index:100;background:rgba(0,0,0,0.35);backdrop-filter:blur(4px)}
+.header, header{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;position:fixed;top:0;width:100%;z-index:100;background:transparent;backdrop-filter:blur(4px)}
 .logo a{color:var(--primary);text-decoration:none;font-weight:600;display:flex;gap:8px;align-items:center}
 .nav-menu{display:flex;gap:14px}
 .nav-menu a{color:var(--light-text);text-decoration:none}
@@ -29,7 +29,7 @@ footer{background:var(--dark-bg);padding:20px;margin-top:20px;text-align:center}
 .social-media a{width:44px;height:44px;background:var(--dark-bg);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;transition:transform 0.18s ease, background 0.18s ease;box-shadow:0 3px 10px rgba(0,0,0,0.35);padding:6px}
 .social-media a:hover{transform:translateY(-3px) scale(1.04);background:rgba(0,196,204,0.12)}
 .social-media img,.social-media svg{width:22px;height:22px;display:block;object-fit:contain}
-@media(max-width:768px){.nav-menu{display:none}.nav-menu.active{display:flex;flex-direction:column;position:fixed;top:60px;left:0;width:100%;background:rgba(0,0,0,0.95);padding:12px 0}}
+@media(max-width:768px){.nav-menu{display:none}.nav-menu.active{display:flex;flex-direction:column;position:fixed;top:60px;left:0;width:100%;background:transparent;padding:12px 0;backdrop-filter:blur(6px)}}
 
 @media(max-width:768px){
   .social-media{flex-direction:row;bottom:10px;right:10px}
